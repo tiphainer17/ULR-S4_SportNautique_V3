@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sport{% endblock %}
+
+{% block body %}
+    <article>
+        {% if sports == 'null' %}
+            <br><br><br><br>
+        <h2>Ce sport n'existe pas</h2>
+        {% else %}
+        <section id="vue_sport">
+            {% for p in sports %}
+            <article>
+                <p class="nom">{{ p.nom }}</p>
+                <div class="orga">
+                    <div class="orga2">
+                        <p class="des2">{{ p.description }}</p>
+                        <p id="lieux">Date : {{ p.date|date("d/m/Y") }}</p>
+
+                        <form id="nb" action="/panier" method="post">
+                            <input type="hidden" name="prix" value="{{ p.prix }}" />
+                            <input type="hidden" name="nom" value="{{ p.nom }}" />
+                            <input type="hidden" name="id_sport" value="{{ p.id }}" />
+                            <label id="nb_pers" for="qte_sport"> Nombres de personnes : </label>
+                            <select class="formulaire" name="qte_sport">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <input id="reserve" type="submit" name="send"  value="Reserver" />
+                        </form>
+
+                    </div>
+                    <figure>
+                        <img src="{{ asset(p.img)}}" alt="{{ p.nom }}" class="photo">
+                        <figcaption class="prix"><strong>{{ p.prix }} € / personne</strong></figcaption>
+                    </figure>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        {% endif %}
+    </article>
+{% endblock %}

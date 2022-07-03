@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Activités{% endblock %}
+
+{% block body %}
+    <main>
+        <h2>{{ nomCategorie }}</h2>
+        <div class="categorie">
+            {% for p in sports %}
+            <section>
+                <article>
+                    <div id="haut">
+                        <p class="nom">{{ p.nom }}</p>
+                    </div>
+                    <div class="orga">
+                        <div class="orga2">
+                            <p class="des">{{ p.description }}</p>
+                            <a href="{{ path('sport', {id:p.id})}}" class="reservation">Réserver</a>
+                        </div>
+                        <figure>
+                            <img src="{{ asset(p.img)}}" alt="{{ p.nom }}" class="photo">
+                            <figcaption class="prix"><strong>{{ p.prix }} €/personne </strong></figcaption>
+                        </figure>
+                    </div>
+                </article>
+            </section>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

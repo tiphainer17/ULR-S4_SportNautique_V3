@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sport Nautique{% endblock %}
+
+{% block body %}
+        <main>
+            <section id="titre">
+                <img alt="nuage1" src="{{ asset('img/nuage1.png') }}" />
+                <h1>Les activités nautiques à La Rochelle</h1>
+                <img alt="nuage2" src="{{ asset('img/nuage1.png') }}" />
+            </section>
+
+            <div class="slider">
+                <img alt="fleche_gauche" src="{{ asset('img/fleche_gauche.png') }}" id="fleche_gauche">
+                <section>
+                    {% for p in sports %}
+                    <!--if pour slider -->
+                    <article class="<?=$class?>">
+                        <!--compteur pour slider-->
+                        <p class="nom">{{ p.nom }}</p>
+                        <div class="orga">
+                            <div class="orga2">
+                                <p class="des">{{ p.description }}</p>
+                                <a href="{{ path('sport', {id:p.id})}}" class="reservation">Réserver</a>
+                            </div>
+                            <figure>
+                                <img src="{{ asset(p.img)}}" alt="{{ p.nom }}" class="photo">
+                                <figcaption class="prix"><strong>{{ p.prix }} €/personne </strong></figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    {% endfor %}
+                </section>
+                <img alt="fleche_droite" src="{{ asset('img/fleche_droite.png') }}" id="fleche_droite">
+            </div>
+        </main>
+{% endblock %}

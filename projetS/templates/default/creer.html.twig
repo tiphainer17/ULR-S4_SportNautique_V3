@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer un compte{% endblock %}
+
+{% block body %}
+    <main>
+        <section>
+            <h1 class="h1Compte">Créer compte</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit">Creer compte</button>
+            {{ form_end(form) }}
+            <!--
+            <form action="" method="post">
+                <fieldset>
+
+                    <label>E-mail :</label>
+                    <input class="formulaire" type="mail" name="mail" required />
+
+
+                    <label>Mot de passe</label>
+                    <input class="formulaire" type="password" name="mdp" required />
+
+
+                    <label>Nom :</label>
+                    <input class="formulaire" type="text" name="nom" required />
+
+
+                    <label>Prenom :</label>
+                    <input class="formulaire" type="text" name="prenom" required />
+
+
+                    <label>Adresse :</label>
+                    <input class="formulaire" type="text" name="adresse" required />
+
+
+                    <label>Code postal :</label>
+                    <input class="formulaire" type="number" name="codePostal" required />
+
+
+                    <label>Ville :</label>
+                    <input class="formulaire" type="text" name="ville" required />
+
+
+                    <label>Pays :</label>
+                    <input class="formulaire" type="text" name="pays" required />
+
+
+                    <label>Téléphone :</label>
+                    <input class="formulaire" type="number" name="telephone" required />
+
+
+                    <input type="submit" name="send" value="Envoyer" />
+
+                </fieldset>
+            </form> -->
+        </section>
+    </main>
+{% endblock %}

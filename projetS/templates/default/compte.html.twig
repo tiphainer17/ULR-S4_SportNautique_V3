@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <main>
+        <h1 class="h1Compte">Mes informations : </h1>
+        <div id="info">
+            <p>{{ app.user.nom }} {{ app.user.prenom }}</p>
+            <p>{{ app.user.email }}</p>
+            <p>{{ app.user.adresse }} {{ app.user.code_postal }} {{ app.user.ville }}</p>
+            <p>{{ app.user.pays }}</p>
+            <p>0{{ app.user.telephone }}</p>
+        </div>
+        <a href="{{ path('app_logout') }}" id="deco">Déconnexion</a>
+    </main>
+{% endblock %}

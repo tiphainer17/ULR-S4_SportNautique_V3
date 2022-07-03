@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{% endblock %}
+
+{% block body %}
+    <main>
+        {% if(vide == true) %}
+            <h2>Panier vide</h2>
+            <img alt="panier vide" class="paniervide" src="{{ asset('img/basket-empty.png') }}">
+        {% else %}
+            <form action="{{ path('panierValider') }}" method="post">
+                <h2>Votre panier :</h2>
+                <table>
+                    <tr>
+                        <th>Designation</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th></th>
+                    </tr>
+
+                    {% for p in panier %}
+                        <tr>
+                            <td>{{ p.nom }}</td>
+                            <td>{{ p.qte_sport }}</td>
+                            <td>{{ p.prix * p.qte_sport }}€</td>
+                            <td><a href="{{ path('panierSuppr',{id:p.id_sport}) }}"><img alt="suppr" src="{{ asset('img/croix.png') }}"></a></td>
+                        </tr>
+                    {% endfor%}
+                </table>
+
+                <p id="total">total : {{ total }}€</p>
+
+                <input type="hidden" name="total" value="{{ total }}">
+                <input id="commander" type="submit" name="commande" value="Commander">
+            </form>
+
+            <!--<?php elseif(!empty($_SESSION['id_personne']) && isset($_POST['commande'])):?>
+            <h2>Commande passé avec succes !</h2>
+            <?php header('Refresh:3;index.php?'); ?>-->
+        {% endif %}
+    </main>
+{% endblock %}

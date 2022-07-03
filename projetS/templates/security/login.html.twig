@@ -1,0 +1,31 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <main>
+        <h1 class="h1Compte">Identification : </h1>
+        <form method="post" id="login">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <fieldset>
+
+                <label for="inputEmail">E-mail</label>
+                <input class="formulaire" type="email" name="email" required>
+
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" class="formulaire" required>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <input type="submit" name="send" value="Valider" />
+            </fieldset>
+        </form>
+        <a href="{{ path('creer_compte') }}" id="noCompte">Pas encore de compte ? Clic ici</a>
+    </main>
+{% endblock %}
+

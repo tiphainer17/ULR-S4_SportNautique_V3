@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{% endblock %}
+
+{% block body %}
+    <main>
+        {% if (commande == true) %}
+            <h2>Commande passé avec succes !</h2>
+            <h2>Votre commande d'un total de {{ total }}€ à été passée le {{ date }}</h2>
+       {% else %}
+            <h2>tu t'es perdu</h2>
+        {% endif %}
+    </main>
+{% endblock %}
